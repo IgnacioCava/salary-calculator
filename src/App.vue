@@ -1,15 +1,15 @@
 <template>
-	<DropDown v-bind:options="['a', 'b']" />
+	<NavBar />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import DropDown from './components/DropDown.vue'
+import NavBar from './components/NavBar.vue'
 
 export default defineComponent({
 	name: 'App',
 	components: {
-		DropDown
+		NavBar
 	}
 })
 </script>
@@ -21,6 +21,6 @@ export default defineComponent({
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
-	margin-top: 60px;
+	height: 100vh;
 }
 </style>
