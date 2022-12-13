@@ -41,6 +41,11 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      "dropdown-label": "#57575d",
+      "dropdown-border-default": "#f0eff2",
+      "dropdown-border-selected": "#d5dbed",
+      "dropdown-selected-none": "#7f8089",
+      "dropdown-selected-color": "#88888d"
     }),
     columns: {
       auto: 'auto',
