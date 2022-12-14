@@ -21,11 +21,22 @@ export default createStore({
 		success: false,
 		error: false
 	} as AppState,
-	getters: {},
+	getters: {
+		status(state) {
+			if (state.loading) return 'loading'
+			if (state.success) return 'success'
+			if (state.error) return 'error'
+		}
+	},
 	mutations: {
 		setData(state, payload) {
+			state.loading = false
+			if (payload instanceof Error) {
+				return (state.error = true)
+			}
 			state.departments = payload?.map((e: any) => e.department)
 			state.cache = payload
+			state.success = true
 		},
 		setSelected(state, payload: { type: keyof typeof state.selected; value: string }) {
 			state.selected[payload.type] = payload.value

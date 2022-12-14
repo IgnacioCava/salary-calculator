@@ -1,20 +1,16 @@
 import data from './data.json'
 import db from '.'
-import { getDoc, doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc, getDocs, collection } from 'firebase/firestore'
 import { SalaryData, Sections } from './types'
-
-const percentage = (totalValue: string, percentage: string) => {
-	return Math.floor((parseInt(percentage) / 100) * parseInt(totalValue.replaceAll(',', '')))
-}
-
-const OTE = (base: string, target: number) => {
-	return parseInt(base.replaceAll(',', '')) - target
-}
+import { percentage, OTE, findDoc } from './helpers'
 
 const setup = async () => {
 	const mappedData: Sections = {}
 
-	const initialized = (await getDoc(doc(db, 'departments/initialized'))).data()?.initialized
+	const docs = (await getDocs(collection(db, 'departments'))).docs.map((e) => ({ id: e.id, data: e.data() }))
+
+	const initialized = findDoc(docs, 'initialized')?.initialized === true
+
 	if (!initialized) {
 		data.map(({ department: dept, jobRole: job, level, minSalary, maxSalary, midSalary, basePayPercentage }) => {
 			const minBase = percentage(minSalary, basePayPercentage)
@@ -45,21 +41,21 @@ const setup = async () => {
 			})
 			await setDoc(doc(db, 'departments', 'initialized'), { initialized: true })
 		} catch (e) {
-			console.error('Error adding document: ', e)
+			return e
 		}
 	}
-	const departments = Object.values((await getDoc(doc(db, 'departments/list'))).data() as string[])
+	const departments = Object.values(findDoc(docs, 'list') as string[])
 	const jobs = await Promise.all(
-		departments.map(async (dept) => {
-			const jobs = (await getDoc(doc(db, `departments/${dept}`))).data()
+		departments?.map(async (dept) => {
+			const jobs = findDoc(docs, dept)
 			const jobsData = Object.entries(jobs as Record<PropertyKey, SalaryData[]>).map(([title, salaryData]) => {
 				const levels = salaryData.map((e) => e.level)
 				return { title, levels, salaryData }
 			})
-
 			return { department: dept, jobs: jobsData }
 		})
 	)
+
 	return jobs
 }
 

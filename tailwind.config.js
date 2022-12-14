@@ -41,11 +41,15 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      "gray-150": "#e9e9e9",
       "dropdown-label": "#57575d",
       "dropdown-border-default": "#dfdcdc",
       "dropdown-border-selected": "#bccdff",
-      "dropdown-selected-none": "#7f8089",
-      "dropdown-selected-color": "#88888d"
+      "dropdown-selected-none": "#667084",
+      "dropdown-selected-color": "#88888d",
+      "base-pay": "#7d50fd",
+      "OTE": "#ed6e4c",
+      "usdgreen": "#0dbb6a"
     }),
     columns: {
       auto: 'auto',
@@ -381,6 +385,7 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
+      Inter: ['Inter', 'sans-serif']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
