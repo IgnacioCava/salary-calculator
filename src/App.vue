@@ -1,7 +1,12 @@
 <template>
-	<h1 class="text-left">Salary Calculator</h1>
-	<NavBar />
-	<SalaryData v-if="result.level" />
+	<div class="py-6 px-20">
+		<h1 class="text-left text-3xl font-extrabold mb-6">Salary Calculator</h1>
+		<NavBar v-if="status === 'success'" />
+		<SalaryData v-if="result.level" />
+
+		<div v-if="status === 'loading'">Fetching data</div>
+		<div v-if="status === 'error'">Error while fetching, please reload the page</div>
+	</div>
 </template>
 
 <script lang="ts">
@@ -21,7 +26,8 @@ export default defineComponent({
 		const store = useStore()
 
 		return {
-			result: computed(() => store.state.found.result)
+			result: computed(() => store.state.found.result),
+			status: computed(() => store.getters.status)
 		}
 	},
 	async beforeCreate() {
@@ -33,7 +39,7 @@ export default defineComponent({
 
 <style>
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
+	font-family: Inter, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;

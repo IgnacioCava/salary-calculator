@@ -1,15 +1,18 @@
 <template>
-	<div :class="disabled && 'pointer-events-none'" class="text-left relative w-fit min-w-1/6 max-w-1/4 font-sans">
-		<span class="text-dropdown-label font-semibold text-sm">
+	<div :class="[dynamicStyles.container, staticStyles.container]">
+		<span :class="staticStyles.label">
 			{{ label }}
 		</span>
-		<div @click.prevent="toggle" :class="{ 'border-dropdown-border-selected': isOpen, 'border-dropdown-border-default': !isOpen, 'hover:border-dropdown-border-selected cursor-pointer': !disabled }" class="flex box-border justify-between items-center border-solid border-2 w-full text-dropdown-selected-none h-10 rounded gap-4 px-3 py-1">
-			<p class="text-lg text-ellipsis whitespace-nowrap w-full overflow-hidden">{{ selected[sets || ''] || label }}</p>
+		<div @click.prevent="toggle" :class="[dynamicStyles.dropdownButton, staticStyles.dropdownButton]">
+			<div :class="staticStyles.dropdownText">
+				<font-awesome-icon :icon="`fa-solid ${icon}`" />
+				<p :class="staticStyles.selectedLabel">{{ selected[sets || ''] || label }}</p>
+			</div>
 			<img :src="chevron" class="h-full py-2" />
 		</div>
-		<div v-if="isOpen" class="flex flex-col absolute top-full border-solid border-2 border-dropdown-border-default w-full mt-[2px] p-2 gap-2 bg-white">
-			<input type="text" v-model="search" placeholder="Search" class="w-full outline-none font-sans appearance-none" />
-			<button v-for="opt in filteredList" :key="opt" :name="opt" class="text-md font-semibold text-dropdown-label w-100 text-left" @click.prevent="setData(opt)">
+		<div v-if="isOpen" :class="staticStyles.dropdown">
+			<input type="text" v-model="search" placeholder="Search" :class="staticStyles.search" />
+			<button v-for="opt in filteredList" @click.prevent="setData(opt)" :key="opt" :class="staticStyles.opt">
 				{{ opt }}
 			</button>
 		</div>
@@ -27,21 +30,33 @@ export default defineComponent({
 		label: String,
 		options: Array as PropType<string[]>,
 		controledBy: String,
-		sets: String
+		sets: String,
+		icon: String
 	},
-	data: () => {
+	data() {
 		return {
 			search: '',
 			isOpen: false,
-			chevron
+			chevron,
+			staticStyles: {
+				container: 'text-left relative w-1/5',
+				label: 'text-dropdown-label font-semibold text-sm',
+				dropdownButton: 'flex box-border justify-between items-center border-solid border-2 w-full h-10 rounded-lg gap-2 px-3 py-1',
+				dropdownText: 'flex row items-center gap-2 overflow-hidden',
+				selectedLabel: 'text-sm text-ellipsis whitespace-nowrap w-full overflow-hidden',
+				dropdown: 'flex flex-col shadow-[0_1px_6px_2px_rgba(0,0,0,0.15)] absolute top-full rounded-lg w-full mt-[2px] bg-white overflow-hidden',
+				search: 'w-full outline-none appearance-none text-sm font-semibold bg-gray-150 p-2',
+				opt: 'text-sm font-semibold text-dropdown-label w-100 text-left p-2'
+			}
 		}
 	},
-	setup() {
+	setup(props) {
 		const store = useStore()
 
 		return {
 			selected: computed(() => store.state.selected),
-			select: (type: string, value: string) => store.commit('setSelected', { type, value })
+			select: (type: string, value: string) => store.commit('setSelected', { type, value }),
+			disabled: computed(() => props.controledBy && !store.state.selected[props.controledBy])
 		}
 	},
 	mounted() {
@@ -66,10 +81,23 @@ export default defineComponent({
 	},
 	computed: {
 		filteredList() {
-			return this.$props.options?.filter((opt) => opt.toString().toLowerCase().includes(this.search.toLowerCase()))
+			return this.options?.filter((opt) => opt.toString().toLowerCase().includes(this.search.toLowerCase()))
 		},
-		disabled() {
-			return this.controledBy && !this.$store.state.selected[this.controledBy]
+		dynamicStyles() {
+			return {
+				container: {
+					'pointer-events-none': this.disabled
+				},
+				dropdownButton: {
+					[`border-dropdown-border-selected`]: this.isOpen,
+					'hover:border-dropdown-border-selected cursor-pointer': !this.disabled,
+					[`text-dropdown-${this.selected[this.sets || ''] ? 'label' : 'selected-none'}`]: true,
+					'font-bold': this.selected[this.sets || '']
+				},
+				selectedLabel: {
+					'text-dropdown-label': this.selected[this.controledBy || '']
+				}
+			}
 		}
 	}
 })

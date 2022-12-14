@@ -1,9 +1,18 @@
 <template>
-	<div class="flex gap-4 flex-col text-left">
-		<span>{{ label }}</span>
-		<span>$ {{ salary }}</span>
-		<span>{{ base }} Base Pay $ {{ format(calculated.base) }}</span>
-		<span>{{ remainingBase }}% On Target Earning $ {{ format(calculated.OTE) }}</span>
+	<div :class="styles.container">
+		<span :class="styles.label">{{ label }}</span>
+		<div :class="styles.salaryContainer">
+			<span :class="styles.mainSalary">$ {{ salary }}</span>
+			<span :class="styles.usd">USD</span>
+		</div>
+		<div :class="styles.salaryDetail">
+			<span class="font-bold text-sm text-base-pay">{{ base }} Base Pay </span>
+			<span :class="styles.calculated">$ {{ format(calculated.base) }}</span>
+		</div>
+		<div :class="styles.salaryDetail">
+			<span class="font-bold text-sm text-OTE">{{ remainingBase }}% On Target Earning </span>
+			<span :class="styles.calculated">$ {{ format(calculated.OTE) }}</span>
+		</div>
 	</div>
 </template>
 
@@ -20,6 +29,19 @@ export default defineComponent({
 			jobs: computed(() => store.state.jobs),
 			levels: computed(() => store.state.levels),
 			selected: computed(() => store.state.selected)
+		}
+	},
+	data() {
+		return {
+			styles: {
+				container: 'flex gap-2 flex-col text-left p-4 w-1/3',
+				label: 'text-sm text-dropdown-selected-none font-semibold tracking-wide',
+				salaryContainer: 'flex justify-between items-center',
+				mainSalary: 'text-3xl font-extrabold',
+				usd: 'text-usdgreen font-bold text-sm',
+				salaryDetail: 'flex items-center gap-4 indent-2',
+				calculated: 'text-lg text-dropdown-selected-none'
+			}
 		}
 	},
 	methods: {
