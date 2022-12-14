@@ -39,7 +39,7 @@ export default createStore({
 			state.success = true
 		},
 		setSelected(state, payload: { type: keyof typeof state.selected; value: string }) {
-			state.selected[payload.type] = payload.value
+			state.selected[payload.type] = payload.value.toString()
 			switch (payload.type) {
 				case 'department': {
 					const jobs = state.cache.find((e) => e.department === payload.value)?.jobs
