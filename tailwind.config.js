@@ -41,6 +41,15 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      "gray-150": "#e9e9e9",
+      "dropdown-label": "#57575d",
+      "dropdown-border-default": "#dfdcdc",
+      "dropdown-border-selected": "#bccdff",
+      "dropdown-selected-none": "#667084",
+      "dropdown-selected-color": "#88888d",
+      "base-pay": "#7d50fd",
+      "OTE": "#ed6e4c",
+      "usdgreen": "#0dbb6a"
     }),
     columns: {
       auto: 'auto',
@@ -376,6 +385,7 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
+      Inter: ['Inter', 'sans-serif']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -637,6 +647,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       '7xl': '80rem',
+      '1/4': '25%',
       full: '100%',
       min: 'min-content',
       max: 'max-content',
@@ -655,6 +666,7 @@ module.exports = {
     minWidth: {
       0: '0px',
       full: '100%',
+      '1/6': '16.6%',
       min: 'min-content',
       max: 'max-content',
       fit: 'fit-content',

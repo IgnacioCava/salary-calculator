@@ -1,0 +1,335 @@
+[
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "83,581",
+    "midSalary": "87,760",
+    "maxSalary": "91,939",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 1
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "97,789",
+    "midSalary": "102,679",
+    "maxSalary": "107,568",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 2
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "108,229",
+    "midSalary": "120,134",
+    "maxSalary": "132,040",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 3
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "124,464",
+    "midSalary": "138,155",
+    "maxSalary": "151,846",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 4
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "143,133",
+    "midSalary": "158,878",
+    "maxSalary": "174,622",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 5
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "157,446",
+    "midSalary": "174,765",
+    "maxSalary": "192,085",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 6
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "173,191",
+    "midSalary": "192,242",
+    "maxSalary": "211,293",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 7
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "190,510",
+    "midSalary": "211,466",
+    "maxSalary": "232,422",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 8
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "209,561",
+    "midSalary": "232,613",
+    "maxSalary": "255,665",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager",
+    "level": 9
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "158,878",
+    "midSalary": "176,354",
+    "maxSalary": "193,831",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager (People Manager)",
+    "level": 5
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "174,765",
+    "midSalary": "193,990",
+    "maxSalary": "213,214",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager (People Manager)",
+    "level": 6
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "192,242",
+    "midSalary": "213,389",
+    "maxSalary": "234,535",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager (People Manager)",
+    "level": 7
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "211,466",
+    "midSalary": "234,728",
+    "maxSalary": "257,989",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager (People Manager)",
+    "level": 8
+  },
+  {
+    "basePayPercentage": "80%",
+    "minSalary": "232,613",
+    "midSalary": "258,200",
+    "maxSalary": "283,788",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Manager (People Manager)",
+    "level": 9
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "104,962",
+    "midSalary": "110,210",
+    "maxSalary": "115,458",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 1
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "122,805",
+    "midSalary": "128,946",
+    "maxSalary": "135,086",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 2
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "135,916",
+    "midSalary": "150,866",
+    "maxSalary": "165,817",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 3
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "156,303",
+    "midSalary": "173,496",
+    "maxSalary": "190,690",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 4
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "179,749",
+    "midSalary": "199,521",
+    "maxSalary": "219,293",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 5
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "197,723",
+    "midSalary": "219,473",
+    "maxSalary": "241,223",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 6
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "217,496",
+    "midSalary": "241,420",
+    "maxSalary": "265,345",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 7
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "239,245",
+    "midSalary": "265,562",
+    "maxSalary": "291,879",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 8
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "263,170",
+    "midSalary": "292,119",
+    "maxSalary": "321,067",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer",
+    "level": 9
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "199,521",
+    "midSalary": "221,468",
+    "maxSalary": "243,416",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer (People Manager)",
+    "level": 5
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "219,473",
+    "midSalary": "243,615",
+    "maxSalary": "267,757",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer (People Manager)",
+    "level": 6
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "241,420",
+    "midSalary": "267,977",
+    "maxSalary": "294,533",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer (People Manager)",
+    "level": 7
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "265,562",
+    "midSalary": "294,774",
+    "maxSalary": "323,986",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer (People Manager)",
+    "level": 8
+  },
+  {
+    "basePayPercentage": "90%",
+    "minSalary": "292,119",
+    "midSalary": "324,252",
+    "maxSalary": "356,385",
+    "department": "Customer Success",
+    "jobRole": "Customer Success Engineer (People Manager)",
+    "level": 9
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "96,059",
+    "midSalary": "100,862",
+    "maxSalary": "105,665",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 1
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "111,428",
+    "midSalary": "117,000",
+    "maxSalary": "122,571",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 2
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "122,270",
+    "midSalary": "135,719",
+    "maxSalary": "149,169",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 3
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "141,833",
+    "midSalary": "157,435",
+    "maxSalary": "173,036",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 4
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "164,526",
+    "midSalary": "182,624",
+    "maxSalary": "200,722",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 5
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "174,398",
+    "midSalary": "193,582",
+    "maxSalary": "212,765",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 6
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "184,862",
+    "midSalary": "205,197",
+    "maxSalary": "225,531",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 7
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "195,953",
+    "midSalary": "217,508",
+    "maxSalary": "239,063",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 8
+  },
+  {
+    "basePayPercentage": "100%",
+    "minSalary": "207,711",
+    "midSalary": "230,559",
+    "maxSalary": "253,407",
+    "department": "Engineering",
+    "jobRole": "Software Design Engineer",
+    "level": 9
+  }
+]
