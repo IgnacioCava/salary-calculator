@@ -42,21 +42,31 @@ export default createStore({
 			state.selected[payload.type] = payload.value
 			switch (payload.type) {
 				case 'department': {
-					const jobs = state.cache.find((e: any) => e.department === payload.value)?.jobs
-					state.jobs = jobs?.map((e: any) => e.title) || []
+					const jobs = state.cache.find((e) => e.department === payload.value)?.jobs
+					state.jobs = jobs?.map((job) => job.title) || []
 					state.selected = { ...state.selected, job: '', level: '' }
 					state.found = { jobsData: jobs || [], salaries: [], result: {} }
+					if (jobs?.length === 1) {
+						const job = jobs[0]
+						state.selected.job = job.title
+						state.found.salaries = job.salaryData
+						state.levels = job.levels
+						if (job.levels.length === 1) {
+							state.selected.level = job.levels[0].toString()
+							state.found.result = job.salaryData[0]
+						}
+					}
 					break
 				}
 				case 'job': {
-					const jobsData = state.found.jobsData.find((e: any) => e.title === payload.value)
+					const jobsData = state.found.jobsData.find((job) => job.title === payload.value)
 					state.levels = jobsData?.levels || []
 					state.selected = { ...state.selected, level: '' }
 					state.found = { ...state.found, salaries: jobsData?.salaryData || [], result: {} }
 					break
 				}
 				case 'level':
-					state.found.result = state.found.salaries.find((e: any) => e.level === state.selected.level) || {}
+					state.found.result = state.found.salaries.find((salary) => salary.level.toString() === state.selected.level) || {}
 					break
 
 				default:
