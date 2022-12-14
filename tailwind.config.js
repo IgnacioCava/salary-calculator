@@ -42,8 +42,8 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
       "dropdown-label": "#57575d",
-      "dropdown-border-default": "#f0eff2",
-      "dropdown-border-selected": "#d5dbed",
+      "dropdown-border-default": "#dfdcdc",
+      "dropdown-border-selected": "#bccdff",
       "dropdown-selected-none": "#7f8089",
       "dropdown-selected-color": "#88888d"
     }),
@@ -642,6 +642,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       '7xl': '80rem',
+      '1/4': '25%',
       full: '100%',
       min: 'min-content',
       max: 'max-content',
@@ -660,6 +661,7 @@ module.exports = {
     minWidth: {
       0: '0px',
       full: '100%',
+      '1/6': '16.6%',
       min: 'min-content',
       max: 'max-content',
       fit: 'fit-content',
