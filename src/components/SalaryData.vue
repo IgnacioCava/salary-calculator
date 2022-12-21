@@ -2,16 +2,16 @@
 	<div :class="styles.container">
 		<span :class="styles.label">{{ label }}</span>
 		<div :class="styles.salaryContainer">
-			<span :class="styles.mainSalary">$ {{ salary }}</span>
+			<span :class="styles.mainSalary">$ {{ type && result[type] }}</span>
 			<span :class="styles.usd">USD</span>
 		</div>
 		<div :class="styles.salaryDetail">
-			<span class="font-bold text-sm text-base-pay">{{ base }} Base Pay </span>
-			<span :class="styles.calculated">$ {{ format(calculated.base) }}</span>
+			<span class="font-bold text-sm text-base-pay">{{ result.basePayPercentage }} Base Pay </span>
+			<span :class="styles.calculated">$ {{ percentageValue }}</span>
 		</div>
-		<div :class="styles.salaryDetail">
+		<div v-if="remainingBase" :class="styles.salaryDetail">
 			<span class="font-bold text-sm text-OTE">{{ remainingBase }}% On Target Earning </span>
-			<span :class="styles.calculated">$ {{ format(calculated.OTE) }}</span>
+			<span :class="styles.calculated">$ {{ OTEValue }}</span>
 		</div>
 	</div>
 </template>
@@ -19,16 +19,20 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import { OTE, formatNumber, percentage } from '@/store/helpers'
 
 export default defineComponent({
 	name: 'SalaryData',
-	setup() {
+	setup(props) {
 		const store = useStore()
+		const result = computed(() => store.getters.result)
+		const percentageValue = computed(() => percentage(result.value[props.type || ''], result.value.basePayPercentage))
+		const OTEValue = computed(() => OTE(result.value[props.type || ''], percentageValue.value))
 		return {
-			departments: computed(() => store.state.departments),
-			jobs: computed(() => store.state.jobs),
-			levels: computed(() => store.state.levels),
-			selected: computed(() => store.state.selected)
+			result,
+			percentageValue: computed(() => formatNumber(percentageValue.value)),
+			OTEValue: computed(() => formatNumber(OTEValue.value)),
+			remainingBase: computed(() => 100 - parseInt(result.value.basePayPercentage))
 		}
 	},
 	data() {
@@ -44,24 +48,9 @@ export default defineComponent({
 			}
 		}
 	},
-	methods: {
-		format(number: number) {
-			return number.toLocaleString().replace('.', ',')
-		}
-	},
 	props: {
-		salary: String,
-		base: String,
-		calculated: {
-			type: Object,
-			default: () => ({ base: '', OTE: '' })
-		},
+		type: String,
 		label: String
-	},
-	computed: {
-		remainingBase() {
-			return 100 - (this.base ? parseInt(this.base) : 0)
-		}
 	}
 })
 </script>

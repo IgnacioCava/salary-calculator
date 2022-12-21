@@ -1,5 +1,3 @@
-import { SalaryData } from '@/firebase/types'
-
 export interface AppState {
 	departments: string[]
 	jobs: string[]
@@ -7,26 +5,19 @@ export interface AppState {
 	selected: {
 		department: string
 		job: string
-		level: string
+		level: number | null
 	}
-	found: {
-		jobsData: Job[]
-		salaries: SalaryData[]
-		result: SalaryData | Record<string, never>
-	}
-	cache: JobsData[]
-	loading: boolean
-	success: boolean
-	error: boolean
+	cache: Result[] | []
+	result: Result | null
+	status: 'loading' | 'success' | 'error'
 }
 
-interface JobsData {
+interface Result {
+	basePayPercentage: string
+	minSalary: string
+	midSalary: string
+	maxSalary: string
 	department: string
-	jobs: Job[]
-}
-
-interface Job {
-	title: string
-	levels: number[]
-	salaryData: SalaryData[]
+	jobRole: string
+	level: number
 }

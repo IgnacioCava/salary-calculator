@@ -2,26 +2,19 @@
 	<main :class="styles.container">
 		<h2 :class="styles.label">Base Salary Range</h2>
 		<div :class="styles.distributor">
-			<SalaryData :salary="data.minSalary" :base="data.basePayPercentage" :calculated="data.calculated?.min" label="Minimum" />
-			<SalaryData :salary="data.midSalary" :base="data.basePayPercentage" :calculated="data.calculated?.mid" label="Midpoint" />
-			<SalaryData :salary="data.maxSalary" :base="data.basePayPercentage" :calculated="data.calculated?.max" label="Maximum" />
+			<SalaryData label="Minimum" type="minSalary" />
+			<SalaryData label="Midpoint" type="midSalary" />
+			<SalaryData label="Maximum" type="maxSalary" />
 		</div>
 	</main>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useStore } from 'vuex'
+import { defineComponent } from 'vue'
 import SalaryData from './SalaryData.vue'
 
 export default defineComponent({
 	name: 'SalaryRange',
-	setup() {
-		const store = useStore()
-		return {
-			data: computed(() => store.state.found.result)
-		}
-	},
 	data() {
 		return {
 			styles: {
