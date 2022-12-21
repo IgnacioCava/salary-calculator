@@ -1,8 +1,8 @@
 <template>
 	<nav :class="staticStyles.container">
-		<DropDown :options="departments" label="Department" sets="department" icon="fa-layer-group" />
-		<DropDown :options="jobs" label="Job title" sets="job" controledBy="department" :disabled="!selected.department" icon="fa-user" />
-		<DropDown :options="levels" label="Level" sets="level" controledBy="job" :disabled="!selected.job" icon="fa-user" />
+		<DropDown @select="fetchJobs" :options="departments" label="Department" type="department" icon="fa-layer-group" />
+		<DropDown @select="fetchLevels" :options="jobs" label="Job title" type="job" controledBy="department" icon="fa-user" />
+		<DropDown @select="fetchResult" :options="levels" label="Level" type="level" controledBy="job" icon="fa-user" />
 		<button @click.prevent="clear" :class="staticStyles.clear">Clear search</button>
 	</nav>
 </template>
@@ -24,14 +24,18 @@ export default defineComponent({
 	},
 	setup() {
 		const store = useStore()
+
 		return {
-			departments: computed(() => store.state.departments),
-			jobs: computed(() => store.state.jobs),
-			levels: computed(() => store.state.levels),
-			selected: computed(() => store.state.selected),
-			clear: () => store.commit('clear')
+			departments: computed(() => store.getters.departments),
+			jobs: computed(() => store.getters.jobs),
+			levels: computed(() => store.getters.levels),
+			clear: () => store.dispatch('clearFields'),
+			fetchJobs: computed(() => (department: string) => store.dispatch('fetchJobs', department)),
+			fetchLevels: computed(() => (job: string) => store.dispatch('fetchLevels', job)),
+			fetchResult: computed(() => (level: number) => store.dispatch('fetchResult', level))
 		}
 	},
+
 	components: {
 		DropDown
 	}

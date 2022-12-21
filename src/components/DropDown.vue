@@ -6,7 +6,7 @@
 		<div @click.prevent="toggle" :class="[dynamicStyles.dropdownButton, staticStyles.dropdownButton]">
 			<div :class="staticStyles.dropdownText">
 				<font-awesome-icon :icon="`fa-solid ${icon}`" />
-				<p :class="staticStyles.selectedLabel">{{ selected[sets || ''] || label }}</p>
+				<p :class="staticStyles.selectedLabel">{{ selected[type || ''] || label }}</p>
 			</div>
 			<img :src="chevron" class="h-full py-2" />
 		</div>
@@ -30,7 +30,7 @@ export default defineComponent({
 		label: String,
 		options: Array as PropType<string[]>,
 		controledBy: String,
-		sets: String,
+		type: String,
 		icon: String
 	},
 	data() {
@@ -54,9 +54,8 @@ export default defineComponent({
 		const store = useStore()
 
 		return {
-			selected: computed(() => store.state.selected),
-			select: (type: string, value: string) => store.commit('setSelected', { type, value }),
-			disabled: computed(() => props.controledBy && !store.state.selected[props.controledBy])
+			selected: computed(() => store.getters.selected),
+			disabled: computed(() => props.controledBy && !store.getters.selected[props.controledBy])
 		}
 	},
 	mounted() {
@@ -75,7 +74,7 @@ export default defineComponent({
 			}
 		},
 		setData(value: string) {
-			this.sets && this.select(this.sets, value)
+			this.$emit('select', value)
 			this.toggle()
 		}
 	},
@@ -91,8 +90,8 @@ export default defineComponent({
 				dropdownButton: {
 					[`border-dropdown-border-selected`]: this.isOpen,
 					'hover:border-dropdown-border-selected cursor-pointer': !this.disabled,
-					[`text-dropdown-${this.selected[this.sets || ''] ? 'label' : 'selected-none'}`]: true,
-					'font-bold': this.selected[this.sets || '']
+					[`text-dropdown-${this.selected[this.type || ''] ? 'label' : 'selected-none'}`]: true,
+					'font-bold': this.selected[this.type || '']
 				},
 				selectedLabel: {
 					'text-dropdown-label': this.selected[this.controledBy || '']
